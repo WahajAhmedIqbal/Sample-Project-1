@@ -3,7 +3,7 @@ import React from "react";
 import { withFormik } from "formik";
 import Input from "../../components/Input";
 import DisplayFormikState from "../../components/DisplayFormState";
-import { resetMessage, setMessage } from "../../actions/index";
+import { resetMessage, setMessage } from "../../actions/message";
 import store from "../../store";
 import * as Yup from "yup";
 
@@ -12,17 +12,12 @@ const formikEnhancer = withFormik({
     email: Yup.string()
       .email("Invalid email address")
       .required("Email is required!"),
-    // name: Yup.string()
-    //   .name("Invalid name")
-    //   .required("Name should be required please"),
-    // password: Yup.string()
-    //   .name("Invalid password")
-    //   .required("password should be required please"),
+    name: Yup.string().required("First Name should be required please"),
+    password: Yup.string().min(4).max(15).required(),
   }),
   mapPropsToValues: (props) => ({
     email: "",
     name: "",
-    password: "",
   }),
   handleSubmit: (values, { setSubmitting }) => {
     const payload = {
@@ -77,18 +72,31 @@ const MyForm = (props) => {
         onBlur={handleBlur}
         validateField={validateField}
       />
-      {/* <Input
+
+      <Input
+        name="name"
+        label="Name"
+        type="name"
+        placeholder="Enter an name."
+        errors={errors.name}
+        value={values.name}
+        touched={touched.name}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        validateField={validateField}
+      />
+      <Input
         name="password"
-        label="Password"
+        label="password"
         type="password"
-        placeholder="Enter an email address."
+        placeholder="Enter an password."
         errors={errors.password}
         value={values.password}
         touched={touched.password}
         onChange={handleChange}
         onBlur={handleBlur}
         validateField={validateField}
-      /> */}
+      />
       <button
         type="button"
         className="outline"

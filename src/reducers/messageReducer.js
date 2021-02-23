@@ -3,7 +3,7 @@ import * as types from "../types";
 export default (state = "", { type }) => {
   switch (type) {
     case types.SET_MESSAGE:
-      return "The login was succesfully validated.";
+      return "The email was succesfully validated.";
     case types.RESET_MESSAGE:
       return "";
     default:

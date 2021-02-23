@@ -1,7 +1,7 @@
 import React, { Fragment, PureComponent } from "react";
 
 class Input extends PureComponent {
-  componentDidUpdate = (prevProps) => {
+  componentDidUpdate = prevProps => {
     const { errors, value } = this.props;
     if (errors !== prevProps.errors || value !== prevProps.value) {
       this.props.validateField({ errors, value });
