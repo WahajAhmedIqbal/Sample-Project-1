@@ -1,7 +1,7 @@
 import React, { Fragment, PureComponent } from "react";
-
-class Input extends PureComponent {
-  componentDidUpdate = prevProps => {
+import { Input, Form } from "antd";
+class Inputs extends PureComponent {
+  componentDidUpdate = (prevProps) => {
     const { errors, value } = this.props;
     if (errors !== prevProps.errors || value !== prevProps.value) {
       this.props.validateField({ errors, value });
@@ -12,10 +12,10 @@ class Input extends PureComponent {
     const { errors, label, name, touched, validateField, ...rest } = this.props;
     return (
       <Fragment>
-        <label htmlFor={name} style={{ display: "block" }}>
+        <Form.Item htmlFor={name} style={{ display: "block" }}>
           {label}
-        </label>
-        <input {...rest} name={name} />
+        </Form.Item>
+        <Input {...rest} name={name} />
         {errors && touched && (
           <div style={{ color: "red", marginTop: ".5rem" }}>{errors}</div>
         )}
@@ -24,4 +24,4 @@ class Input extends PureComponent {
   };
 }
 
-export default Input;
+export default Inputs;

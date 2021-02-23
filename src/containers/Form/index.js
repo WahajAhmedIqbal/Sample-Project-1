@@ -1,10 +1,11 @@
 import debounce from "lodash/debounce";
 import React from "react";
 import { withFormik } from "formik";
-import Input from "../../components/Input";
+import Inputs from "../../components/Input";
 import DisplayFormikState from "../../components/DisplayFormState";
-import { resetMessage, setMessage } from "../../actions/message";
+import { resetMessage, setMessage } from "../../store/actions/message";
 import store from "../../store";
+import { Button } from "antd";
 import * as Yup from "yup";
 
 const formikEnhancer = withFormik({
@@ -60,7 +61,7 @@ const MyForm = (props) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Input
+      <Inputs
         name="email"
         label="Email"
         type="email"
@@ -73,7 +74,7 @@ const MyForm = (props) => {
         validateField={validateField}
       />
 
-      <Input
+      <Inputs
         name="name"
         label="Name"
         type="name"
@@ -85,7 +86,7 @@ const MyForm = (props) => {
         onBlur={handleBlur}
         validateField={validateField}
       />
-      <Input
+      <Inputs
         name="password"
         label="password"
         type="password"

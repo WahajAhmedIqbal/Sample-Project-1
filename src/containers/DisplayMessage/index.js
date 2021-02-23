@@ -5,4 +5,4 @@ import "./styles.css";
 const DisplayMessage = ({ message }) =>
   message ? <div className="message-container">{message}</div> : null;
 
-export default connect(state => ({ message: state.message }))(DisplayMessage);
+export default connect((state) => ({ message: state.message }))(DisplayMessage);
